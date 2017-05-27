@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="5dp">
+
+    <ImageView
+        android:id="@+id/thumbnail"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        android:maxHeight="175dp"
+        android:minHeight="175dp"
+        android:scaleType="fitCenter"
+        />
+    <TextView android:gravity="center_vertical|center_horizontal" android:layout_height="wrap_content" android:text="TextView" android:layout_width="fill_parent" android:id="@+id/songName">
+
+    </TextView>
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <ToggleButton
+            android:id="@+id/playPauseButton"
+            android:layout_width="30px"
+            android:layout_height="30px"
+            android:layout_marginLeft="5px"
+            android:layout_marginTop="5px"
+            android:background="@drawable/ic_play_pause"
+            android:textOn=" android:textOff=" >
+        </ToggleButton>
+
+        <TextView
+            android:id="@+id/musicCurrentLoc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5px"
+            android:layout_marginTop="5px" >
+        </TextView>
+
+        <SeekBar
+            android:id="@+id/musicSeekBar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5px"
+            android:layout_weight="1" >
+        </SeekBar>
+
+        <TextView
+            android:id="@+id/musicDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5px"
+            android:layout_marginTop="5px" >
+        </TextView>
+
+        <ImageButton
+            android:id="@+id/shufflebutton"
+            android:layout_width="35px"
+            android:layout_height="35px"
+            android:layout_marginLeft="5px"
+            android:layout_marginTop="5px"
+            android:src="@drawable/ic_music_shuffle" >
+        </ImageButton>
+    </LinearLayout>
+</LinearLayout>

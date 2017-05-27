@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Settings activity theme. -->
+    <style name="SettingsTheme" parent="@android:style/Theme.Material">
+<!--
+        <item name="android:colorPrimary">@color/wordapp_orange</item>
+        <item name="android:colorPrimaryDark">@color/wordapp_dark_orange</item>
+-->
+    </style>
+
+</resources>

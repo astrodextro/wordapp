@@ -1,0 +1,66 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="@style/Theme.AppCompat">
+        <item name="colorPrimary">@color/wordapp_orange</item>
+        <item name="colorPrimaryDark">@color/wordapp_dark_orange</item>
+        <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
+    </style>
+
+    <!-- Main activity theme. -->
+    <style name="MessageListTheme" parent="AppTheme">
+        <item name="actionBarStyle">@style/ActionBar.Solid.NoTitle</item>
+    </style>
+
+    <!-- Settings activity theme. -->
+    <!--<style name="SettingsTheme" parent="AppTheme">-->
+    <!--</style>-->
+
+    <style name="SettingsTheme" parent="AppTheme">
+        <item name="actionBarStyle">@style/ActionBar.V14.wordNoTitle</item>
+    </style>
+
+    <!-- Settings activity action bar styles -->
+    <style name="ActionBar.V14.wordNoTitle" parent="SettingsTheme">
+        <item name="android:background">@color/wordapp_orange</item>
+        <item name="android:height">56dp</item>
+    </style>
+
+    <!-- main activity action bar styles -->
+    <style name="ActionBar.Solid.NoTitle" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="displayOptions">useLogo|showHome</item>
+        <item name="logo">@mipmap/ic_launcher</item>
+    </style>
+
+    <!-- Style for forecast listview -->
+    <style name="ForecastListStyle">
+        <!-- Here it's a stub.  In screens of sufficient width, this style includes modifications
+        for two-pane layout -->
+    </style>
+
+    <!-- Message Detail activity theme. -->
+    <style name="MessageDetailTheme" parent="AppTheme">
+        <item name="actionBarStyle">@style/ActionBar.Solid.NoTitle</item>
+    </style>
+
+    <!-- Paystack activity theme. -->
+    <style name="Paystack.Theme" parent="AppTheme">
+        <item name="actionBarStyle">@style/ActionBar.Solid.NoTitle</item>
+    </style>
+
+
+    <style name="pref_themes_blue" parent="AppTheme">
+        <item name="colorPrimary">@color/wordapp_blue</item>
+        <item name="colorPrimaryDark">@color/wordapp_dark_blue</item>
+    </style>
+
+    <style name="pref_themes_orange" parent="AppTheme">
+        <item name="colorPrimary">@color/wordapp_light_orange</item>
+        <item name="colorPrimaryDark">@color/wordapp_orange</item>
+    </style>
+
+    <style name="pref_themes_dark" parent="@style/Theme.AppCompat">
+        <item name="colorPrimary">@color/wordapp_dark_orange</item>
+        <item name="colorPrimaryDark">@color/wordapp_dark_orange</item>
+    </style>
+</resources>

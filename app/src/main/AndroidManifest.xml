@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.felixunlimited.word.app">
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <application
+        android:allowBackup="true"
+        android:backupAgent=".BackupAgent"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.backup.api_key"
+            android:value="AEdPqrEAAAAI7I7YjpwC3PSerI7Ui-3ZBoW_MtjLlLpkoMOR4A" />
+        <meta-data
+            android:name="co.paystack.android.PublicKey"
+            android:value="pk_test_a6ff6ad827edc88ce78ad6b32f812bc4a1b34cdc" />
+
+        <activity
+            android:name=".UserMessagesListActivity"
+            android:label="@string/app_name"
+            android:theme="@style/MessageListTheme">
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".MessagesSearchActivity" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".sync.SplashScreenActivity"
+            android:label="@string/app_name" />
+        <!--
+ ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.gms.version" -->
+        <!-- android:value="@integer/google_play_services_version" /> -->
+
+        <activity
+            android:name=".MessagesSearchActivity"
+            android:label="@string/title_activity_messages_search"
+            android:parentActivityName=".UserMessagesListActivity">
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.felixunlimited.word.app.UserMessagesListActivity" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".data.AndroidDatabaseManager"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".MessageDetailActivity"
+            android:label="@string/title_message_detail"
+            android:parentActivityName=".UserMessagesListActivity"
+            android:theme="@style/MessageDetailTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UserMessagesListActivity" />
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".UserMessagesListActivity"
+            android:theme="@style/SettingsTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UserMessagesListActivity" />
+        </activity>
+
+        <provider
+            android:name=".data.MessageProvider"
+            android:authorities="@string/content_authority"
+            android:exported="false"
+            android:syncable="true" />
+
+        <!-- SyncAdapter's dummy authentication service -->
+        <service android:name=".sync.WordAppAuthenticatorService">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
+        </service>
+
+        <!-- The SyncAdapter service -->
+        <service
+            android:name=".sync.WordAppSyncService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/syncadapter" />
+        </service>
+        <service
+            android:name=".player.MessagePlayerService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.felixunlimited.word.app.action.PLAY_DOWNLOADED" />
+                <action android:name="com.felixunlimited.word.app.action.STREAM" />
+                <action android:name="com.felixunlimited.word.app.action.PAUSE" />
+                <action android:name="com.felixunlimited.word.app.action.PLAY" />
+                <action android:name="com.felixunlimited.word.app.action.STOP" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".player.MusicService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".DownloadService"
+            android:exported="false" />
+
+        <activity
+            android:name=".DownloadActivity"
+            android:label="@string/title_activity_download" />
+
+        <!-- <receiver -->
+        <!-- android:name=".MessageReceiver" -->
+        <!-- android:enabled="true" -->
+        <!-- android:exported="true" /> -->
+
+        <activity
+            android:name=".PurchaseActivity"
+            android:label="@string/title_activity_message_purchase"
+            android:parentActivityName=".MessageDetailActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.felixunlimited.word.app.MessageDetailActivity" />
+        </activity>
+        <activity
+            android:name=".SubscriptionsActivity"
+            android:label="@string/title_activity_subscription" />
+        <activity
+            android:name=".EventsActivity"
+            android:label="@string/title_activity_events" />
+        <activity
+            android:name=".PaystackActivity"
+            android:label="@string/title_activity_message_purchase"
+            android:theme="@style/Paystack.Theme" />
+        <activity
+            android:name=".DeclarationsActivity"
+            android:label="@string/title_activity_declarations" />
+    </application>
+
+</manifest>

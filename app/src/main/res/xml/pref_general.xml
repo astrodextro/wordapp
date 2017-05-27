@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--<ListPreference-->
+        <!--android:title="@string/pref_themes_label"-->
+        <!--android:key="@string/pref_themes_key"-->
+        <!--android:defaultValue="@string/pref_themes_blue"-->
+        <!--android:entryValues="@array/pref_themes_values"-->
+        <!--android:entries="@array/pref_themes_options" />-->
+
+    <CheckBoxPreference
+        android:title="@string/pref_enable_notifications_label"
+        android:key="@string/pref_enable_notifications_key"
+        android:summaryOff="@string/pref_enable_notifications_false"
+        android:summaryOn="@string/pref_enable_notifications_true"
+        android:defaultValue="@string/pref_enable_notifications_default" />
+
+    <ListPreference
+        android:defaultValue="@string/pref_dir_chooser_internal"
+        android:entries="@array/pref_dir_chooser_options"
+        android:entryValues="@array/pref_dir_chooser_values"
+        android:key="@string/pref_dir_chooser_key"
+        android:title="@string/pref_dir_chooser_label" />
+
+    <ListPreference
+        android:defaultValue="@string/pref_decl_interval_value_3"
+        android:entries="@array/pref_decl_interval_options"
+        android:entryValues="@array/pref_decl_interval_values"
+        android:key="@string/pref_decl_interval_key"
+        android:title="@string/pref_decl_interval_label" />
+
+    <!--
+        <CheckBoxPreference
+            android:title="Subscribe for pastor's declarations"
+            android:key="subscription_declarations"
+            android:summaryOff="@string/pref_enable_notifications_false"
+            android:summaryOn="@string/pref_enable_notifications_true"
+            android:defaultValue="@string/pref_enable_notifications_default" />
+
+        <CheckBoxPreference
+            android:title="Subscribe for pastor Mo's prayers"
+            android:key="subscription_prayers"
+            android:summaryOff="@string/pref_enable_notifications_false"
+            android:summaryOn="@string/pref_enable_notifications_true"
+            android:defaultValue="@string/pref_enable_notifications_default" />
+    -->
+
+
+</PreferenceScreen>

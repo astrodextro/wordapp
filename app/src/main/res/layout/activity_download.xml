@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/status1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You are about to download a message:"
+            android:textSize="30dp"
+            android:layout_marginBottom="50dp" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title: "
+            android:textSize="30dp"
+            android:singleLine="true"
+            android:textColor="@color/wordapp_light_orange" />
+
+        <TextView
+            android:id="@+id/preacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Preacher: "
+            android:textSize="30dp"
+            android:singleLine="true"
+            android:textColor="@color/wordapp_light_orange" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date: "
+            android:textSize="30dp"
+            android:singleLine="true"
+            android:textColor="@color/wordapp_light_orange" />
+
+        <TextView
+            android:id="@+id/cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cost: N"
+            android:textSize="30dp"
+            android:singleLine="true"
+            android:textColor="@color/wordapp_light_orange" />
+
+        <TextView
+            android:id="@+id/status2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Press download to continue."
+            android:layout_marginTop="75dp"
+            android:textSize="30dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/download_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="25dp"
+        android:scaleType="center"
+        android:text="DOWNLOAD"
+        android:textSize="50dp"
+        android:textStyle="bold" />
+
+</FrameLayout>

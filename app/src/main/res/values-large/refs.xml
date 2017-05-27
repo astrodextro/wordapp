@@ -1,0 +1,11 @@
+<resources>
+    <!--
+    Layout alias to replace the single-pane version of the layout with a
+    two-pane version on Large screens.
+
+    For more on layout aliases, see:
+    http://developer.android.com/training/multiscreen/screensizes.html#TaskUseAliasFilters
+    -->
+    <item type="layout" name="activity_message_list">@layout/activity_message_list_two_pane</item>
+    <item type="layout" name="message_list_item">@layout/message_list_item_two_pane</item>
+</resources>

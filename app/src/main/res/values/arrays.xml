@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="pref_themes_options">
+        <item>@string/pref_themes_label_blue</item>
+        <item>@string/pref_themes_label_orange</item>
+        <item>@string/pref_themes_label_dark</item>
+    </string-array>
+
+    <string-array name="pref_themes_values">
+        <item>@string/pref_themes_blue</item>
+        <item>@string/pref_themes_orange</item>
+        <item>@string/pref_themes_dark</item>
+    </string-array>
+
+    <string-array name="pref_dir_chooser_options">
+        <item>@string/pref_dir_chooser_label_internal</item>
+        <item>@string/pref_dir_chooser_label_external</item>
+    </string-array>
+
+    <string-array name="pref_dir_chooser_values">
+        <item>@string/pref_dir_chooser_internal</item>
+        <item>@string/pref_dir_chooser_external</item>
+    </string-array>
+
+    <string-array name="pref_decl_interval_options">
+        <item>@string/pref_decl_interval_label_3</item>
+        <item>@string/pref_decl_interval_label_6</item>
+        <item>@string/pref_decl_interval_label_12</item>
+    </string-array>
+
+    <string-array name="pref_decl_interval_values">
+        <item>@string/pref_decl_interval_value_3</item>
+        <item>@string/pref_decl_interval_value_6</item>
+        <item>@string/pref_decl_interval_value_12</item>
+    </string-array>
+
+</resources>
