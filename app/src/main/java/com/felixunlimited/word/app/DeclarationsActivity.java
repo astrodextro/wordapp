@@ -8,6 +8,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.PersistableBundle;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
@@ -49,7 +50,8 @@ public class DeclarationsActivity extends AppCompatActivity
     private static final int DECL_PREACHER_KEY = 4;
     private static final int DECL_DOWNLOADED = 5;
     private static final int DECL_TIMESTAMP = 6;
-    private static final String CURRENT_SCROLL_POSITION = "decl_play_time";
+    private static final String CURRENT_SCROLL_POSITION = "decl_scroll_position";
+    private static final String PLAY_TIME = "decl_play_time";
 
     ScrollView declScrollView;
     Button bNext, bPrev;
@@ -65,7 +67,8 @@ public class DeclarationsActivity extends AppCompatActivity
     private double startTime = 0;
     private double finalTime = 0;
     private Handler mHandler = new Handler();
-    private int decl_id = 0;
+    private int decl_id = 1;
+    boolean toContinue = false;
     // indicates the state our service:
     enum State {
         Idle,
@@ -99,20 +102,6 @@ public class DeclarationsActivity extends AppCompatActivity
 
         context = this;
         setContentView(R.layout.activity_declarations);
-
-        if (savedInstanceState != null && declCursor.getCount() > 0)
-        {
-            startScrollPosition = savedInstanceState.getInt(CURRENT_SCROLL_POSITION, 0);
-            declScrollView.smoothScrollTo(0, (int) startScrollPosition);
-//            if (mState == State.Started)
-//            {
-//                finalTime = declPlayer.getDuration();
-//                startTime = declPlayer.getCurrentPosition();
-//                startScrollPosition = (startTime / finalTime) * finalScrollPosition;
-//                declScrollView.smoothScrollTo(0, (int) startScrollPosition);
-//                mHandler.postDelayed(updateScroll, 100);
-//            }
-        }
 
         declScrollView = (ScrollView) findViewById(R.id.decl_scroll_view);
         bNext = (Button) findViewById(R.id.buttonNext);
@@ -170,15 +159,29 @@ public class DeclarationsActivity extends AppCompatActivity
         if (actionBar != null) {
             actionBar.setElevation(0f);
         }
+
+        if (savedInstanceState != null) {
+            startScrollPosition = savedInstanceState.getInt(CURRENT_SCROLL_POSITION, 0);
+            declScrollView.smoothScrollTo(0, (int) startScrollPosition);
+            decl_id = savedInstanceState.getInt("decl_id", 1);
+
+            startTime = savedInstanceState.getInt(PLAY_TIME, 0);
+            if (mState == State.Idle)
+            {
+                playDecl();
+            }
+
+        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+//        onSaveInstanceState();
         declCursor.close();
+        mHandler.removeCallbacks(updateScroll);
         if (declPlayer != null)
             declPlayer.release();
-        finish();
     }
 
     @Override
@@ -186,6 +189,24 @@ public class DeclarationsActivity extends AppCompatActivity
         super.onSaveInstanceState(outState);
         outState.putInt(CURRENT_SCROLL_POSITION, declScrollView.getVerticalScrollbarPosition());
         outState.putInt("decl_id", decl_id);
+        if (declPlayer != null && mState != State.Error)
+        {
+            outState.putInt(PLAY_TIME, declPlayer.getCurrentPosition());
+            outState.putBoolean("to_continue", true);
+        }
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
+        super.onRestoreInstanceState(savedInstanceState, persistentState);
+        startScrollPosition = savedInstanceState.getInt(CURRENT_SCROLL_POSITION, 0);
+        declScrollView.smoothScrollTo(0, (int) startScrollPosition);
+
+        startTime = savedInstanceState.getInt(PLAY_TIME, 0);
+        if (mState == State.Idle)
+        {
+            playDecl();
+        }
     }
 
     @Override
@@ -371,11 +392,13 @@ public class DeclarationsActivity extends AppCompatActivity
     @Override
     public void onPrepared(MediaPlayer mediaPlayer) {
         mState = State.Prepared;
+        declPlayer.seekTo((int) startTime);
         declPlayer.start();
         mState = State.Started;
+        invalidateOptionsMenu();
 
         finalTime = declPlayer.getDuration();
-        startTime = declPlayer.getCurrentPosition();
+        finalScrollPosition = declScrollView.getChildAt(0).getHeight();
         startScrollPosition = (startTime / finalTime) * finalScrollPosition;
         declScrollView.smoothScrollTo(0, (int) startScrollPosition);
         mHandler.postDelayed(updateScroll, 100);

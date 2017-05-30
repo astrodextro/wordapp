@@ -6,12 +6,16 @@
         android:title="@string/action_settings"
         android:orderInCategory="100"
         app:showAsAction="never" />
-    <item android:id="@+id/action_subscriptions"
-        android:title="@string/action_subscriptions"
-        android:orderInCategory="90"
-        app:showAsAction="never" />
+    <!--<item android:id="@+id/action_subscriptions"-->
+        <!--android:title="@string/action_subscriptions"-->
+        <!--android:orderInCategory="90"-->
+        <!--app:showAsAction="never" />-->
     <item android:id="@+id/action_events"
         android:title="@string/upcoming_events"
+        android:orderInCategory="10"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_declarations"
+        android:title="@string/ideclare"
         android:orderInCategory="10"
         app:showAsAction="never" />
 </menu>

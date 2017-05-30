@@ -63,6 +63,12 @@ public class UserMessagesListActivity extends AppCompatActivity
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(UserMessagesListActivity.this);
         final SharedPreferences.Editor editor = sharedPreferences.edit();
 
+//        String preferredDir = sharedPreferences.getString(getString(R.string.pref_dir_chooser_key), "internal");
+//        if (preferredDir.equals("internal"))
+//            if (getExternalFilesDir(null) != null)
+//                if (getExternalFilesDir(null).length() > 0)
+//                    new Utility.MoveFilesTask (this).execute(getExternalFilesDir(null), getFilesDir());
+
         if (Utility.isConnected(this)) {
             WordAppSyncAdapter.initializeSyncAdapter(this);
         }

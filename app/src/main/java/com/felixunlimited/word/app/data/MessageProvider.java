@@ -560,7 +560,6 @@ public class MessageProvider extends ContentProvider {
                 returnCount = 0;
                 try {
                     for (ContentValues value : values) {
-//                        normalizeDate(value);
                         String[] args = {value.get(MessageContract.PreachersEntry._ID).toString()};
                         long _id = db.insert(MessageContract.PreachersEntry.TABLE_NAME, null, value);
                         if (_id != -1) {

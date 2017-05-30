@@ -98,8 +98,8 @@ public class MessageDetailActivity extends AppCompatActivity {
             startActivity(new Intent(this, SettingsActivity.class));
             return true;
         }
-        if (id == R.id.action_subscriptions) {
-            startActivity(new Intent(this, SubscriptionsActivity.class));
+        if (id == R.id.action_declarations) {
+            startActivity(new Intent(this, DeclarationsActivity.class));
             return true;
         }
         if (id == R.id.action_events) {

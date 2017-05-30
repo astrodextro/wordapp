@@ -50,8 +50,8 @@ public class DownloadService extends IntentService {
 //                                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN)
                 .setTitle("Downloading: "+messageTitle)
                 .setDescription("Please ensure you have good internet connectivity")
-                .setDestinationUri(Uri.fromFile(Utility.chooseFile(context, fileName)));
-//                .setDestinationInExternalFilesDir(getBaseContext(), null, fileName);                        //Enqueue a new download and same the referenceId
+//                .setDestinationUri(Uri.fromFile(Utility.chooseFile(context, fileName)));
+                .setDestinationInExternalFilesDir(getBaseContext(), null, fileName);                        //Enqueue a new download and same the referenceId
         final long downloadReference = downloadManager.enqueue(req);
 
         new Thread(new Runnable() {

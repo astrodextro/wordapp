@@ -1,7 +1,5 @@
 package co.paystack.android.api.request;
 
-import android.util.Log;
-
 import com.google.gson.annotations.SerializedName;
 
 import java.util.HashMap;

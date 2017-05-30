@@ -625,31 +625,33 @@ public class Utility {
     }
 
     public static File choosePreferredDir (Context context) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        String internal = context.getString(R.string.pref_dir_chooser_internal);
-        String external = context.getString(R.string.pref_dir_chooser_external);
-
-        if (internal.equals(sharedPreferences.getString(context.getString(R.string.pref_dir_chooser_key), null))) {
-            if (hasSpace(context.getFilesDir()))
-                return context.getFilesDir();
-            else
-                Toast.makeText(context, "Insufficient memory in internal storage", Toast.LENGTH_LONG).show();
-        }
-        else if (external.equals(sharedPreferences.getString(context.getString(R.string.pref_dir_chooser_key), null))) {
-            if (isExternalStorageWritable()) {
-                if (!hasSpace(context.getExternalFilesDir(null)))
-                    Toast.makeText(context, "Insufficient memory in external memory", Toast.LENGTH_LONG).show();
-                return context.getExternalFilesDir(null);
-//                if (hasSpace(context.getExternalFilesDir(null)))
-//                    return context.getExternalFilesDir(null);
-//                else
+        return context.getExternalFilesDir(null);
+//        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+//        String internal = context.getString(R.string.pref_dir_chooser_internal);
+//        String external = context.getString(R.string.pref_dir_chooser_external);
+//
+//        if (internal.equals(sharedPreferences.getString(context.getString(R.string.pref_dir_chooser_key), "internal"))) {
+//            if (hasSpace(context.getFilesDir()))
+//                return context.getFilesDir();
+//            else
+//                Toast.makeText(context, "Insufficient memory in internal storage", Toast.LENGTH_LONG).show();
+//        }
+//        else {
+////        else if (external.equals(sharedPreferences.getString(context.getString(R.string.pref_dir_chooser_key), null))) {
+//            if (isExternalStorageWritable()) {
+//                if (!hasSpace(context.getExternalFilesDir(null)))
 //                    Toast.makeText(context, "Insufficient memory in external memory", Toast.LENGTH_LONG).show();
-            }
-            else
-                Toast.makeText(context, "External memory not readable", Toast.LENGTH_LONG).show();
-        }
-
-        return null;
+//                return context.getExternalFilesDir(null);
+////                if (hasSpace(context.getExternalFilesDir(null)))
+////                    return context.getExternalFilesDir(null);
+////                else
+////                    Toast.makeText(context, "Insufficient memory in external memory", Toast.LENGTH_LONG).show();
+//            }
+//            else
+//                Toast.makeText(context, "External memory not readable", Toast.LENGTH_LONG).show();
+//        }
+//
+//        return null;
     }
 
     public static File chooseFile (Context context, String fileName) {

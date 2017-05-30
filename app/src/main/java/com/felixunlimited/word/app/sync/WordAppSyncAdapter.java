@@ -73,7 +73,7 @@ public class WordAppSyncAdapter extends AbstractThreadedSyncAdapter {
     // these indices must match the projection
     private static final int DECLARATIONS_ID = 0;
     private static final int DECLARATIONS_DATE = 1;
-    private static final int DECLARATIONS_TITLE = 3;
+    private static final int DECLARATIONS_TITLE = 2;
 
     private static final String[] LOG_PROJECTION = new String[] {
             MessageContract.LogEntry._ID,
@@ -380,8 +380,8 @@ public class WordAppSyncAdapter extends AbstractThreadedSyncAdapter {
 //                                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN)
                                 .setTitle("WordApp Syncing")
                                 .setDescription("This will just take a while")
-                                .setDestinationUri(Uri.fromFile(Utility.chooseFile(context, fileName)));
-//                                .setDestinationInExternalFilesDir(context, null, fileName);
+//                                .setDestinationUri(Uri.fromFile(Utility.chooseFile(context, fileName)));
+                                .setDestinationInExternalFilesDir(context, null, fileName);
                         //Enqueue a new download and same the referenceId
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                             req.setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN);
@@ -454,16 +454,16 @@ public class WordAppSyncAdapter extends AbstractThreadedSyncAdapter {
                                 .setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN)
                                 .setTitle("WordApp Syncing")
                                 .setDescription("This will just take a while")
-                                .setDestinationUri(Uri.fromFile(Utility.chooseFile(context, fileName)));
-//                                .setDestinationInExternalFilesDir(context, null, fileName);
+//                                .setDestinationUri(Uri.fromFile(Utility.chooseFile(context, fileName)));
+                                .setDestinationInExternalFilesDir(context, null, fileName);
 // Enqueue a new download and same the referenceId
                         long downloadReference = downloadManager.enqueue(req);
                     }
-                    notifyEvent();
                     j++;
                 }
             }
 
+            notifyEvent();
             log(LOG_TAG, "Events Sync Complete. " + j +  " Inserted", Utility.getUniquePsuedoID(), System.currentTimeMillis(), 'd', null, context);
 
         } catch (JSONException e) {
@@ -521,8 +521,8 @@ public class WordAppSyncAdapter extends AbstractThreadedSyncAdapter {
                                 .setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN)
                                 .setTitle("WordApp Syncing")
                                 .setDescription("This will just take a while")
-                                .setDestinationUri(Uri.fromFile(Utility.chooseFile(context, fileNameT)));
-//                                .setDestinationInExternalFilesDir(context, null, fileNameT);
+ //                               .setDestinationUri(Uri.fromFile(Utility.chooseFile(context, fileNameT)));
+                                .setDestinationInExternalFilesDir(context, null, fileNameT);
                         //Enqueue a new download and same the referenceId
                         long downloadReference = downloadManager.enqueue(req);
                     }
@@ -542,15 +542,15 @@ public class WordAppSyncAdapter extends AbstractThreadedSyncAdapter {
                                 .setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN)
                                 .setTitle("WordApp Syncing")
                                 .setDescription("This will just take a while")
-                                .setDestinationUri(Uri.fromFile(Utility.chooseFile(context, fileNameT)));
-//                                .setDestinationInExternalFilesDir(context, null, fileNameA);
+//                                .setDestinationUri(Uri.fromFile(Utility.chooseFile(context, fileNameT)));
+                                .setDestinationInExternalFilesDir(context, null, fileNameA);
                         //Enqueue a new download and same the referenceId
                         long downloadReference = downloadManager.enqueue(req);
                     }
-                    notifyDecl();
                     j++;
                 }
             }
+            notifyDecl();
 
             log(LOG_TAG, "declarations Sync Complete. " + j +  " Inserted", Utility.getUniquePsuedoID(), System.currentTimeMillis(), 'd', null, context);
 

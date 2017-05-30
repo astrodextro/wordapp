@@ -112,15 +112,16 @@ public class MessagesAdapter extends CursorAdapter {
 
         // For accessibility, add a content overview to the icon field
         File dir = Utility.choosePreferredDir(context);
-//        if (!dir.exists())
-//        {
+        String preachersDir = "";
+        if ((dir != null && dir.exists()))
+        {
+            preachersDir = dir.getAbsolutePath();
+//            File preacherFile = new File(preachersDir, fileName);
 //            dir.mkdirs();
-//        }
-
-        String preachersDir = dir.getAbsolutePath();
+        }
         String fileName = "p"+preacher_id+".png";
-        File preacherFile = new File(preachersDir, fileName);
         Utility.setImage(preachersDir,fileName,viewHolder.preacherPicture);
+
 
         viewHolder.preacherPicture.setContentDescription(preacher_name);
 
